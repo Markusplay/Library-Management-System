@@ -9,7 +9,7 @@ namespace Course.Presenter
     {
         DeleteBookModel deleteBook = new DeleteBookModel();
         IDeleteBook deleteBookView;
-        SqlConnection connection = new SqlConnection(@"Data Source=САША-ПК\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Саша\source\repos\Course\Course\LibraryData.mdf;Integrated Security=True");
         public DeleteBookPresenter(IDeleteBook view) : base(view)
         {
             deleteBookView = view;

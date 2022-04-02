@@ -8,7 +8,7 @@ namespace Course.Presenter
     class GuestPresenter
     {
         private SqlCommand commandForm;
-        SqlConnection connection = new SqlConnection(@"Data Source=САША-ПК\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Саша\source\repos\Course\Course\LibraryData.mdf;Integrated Security=True");
         IGuest guestView;
         public GuestPresenter(IGuest view)
         {
