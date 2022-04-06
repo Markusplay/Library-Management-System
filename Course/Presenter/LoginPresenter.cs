@@ -17,7 +17,7 @@ namespace Course.Presenter
         }
         public void checkConnection()
         {
-            if (connection.State == ConnectionState.Open) //Check if connection to database is already opened
+            if (connection.State == ConnectionState.Open) 
                 connection.Close();
             connection.Open();
         }
