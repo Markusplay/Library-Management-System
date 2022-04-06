@@ -8,7 +8,7 @@ namespace Course.Presenter
 {
     class LoginPresenter
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Саша\source\repos\Course\Course\LibraryData.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         ILogin loginView;
         private int _checkLogin = 0;
         public LoginPresenter(ILogin view)

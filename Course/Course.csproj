@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -62,34 +62,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addBook.cs">
+    <Compile Include="Forms\AddBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addBook.Designer.cs">
-      <DependentUpon>addBook.cs</DependentUpon>
+    <Compile Include="Forms\AddBook.Designer.cs">
+      <DependentUpon>AddBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminPage.cs">
+    <Compile Include="Forms\AdminPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminPage.Designer.cs">
+    <Compile Include="Forms\AdminPage.Designer.cs">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeleteBook.cs">
+    <Compile Include="Forms\DeleteBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeleteBook.Designer.cs">
+    <Compile Include="Forms\DeleteBook.Designer.cs">
       <DependentUpon>DeleteBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditBooks.cs">
+    <Compile Include="Forms\EditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditBooks.Designer.cs">
-      <DependentUpon>EditBooks.cs</DependentUpon>
+    <Compile Include="Forms\EditBook.Designer.cs">
+      <DependentUpon>EditBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="GuestPage.cs">
+    <Compile Include="Forms\GuestPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GuestPage.Designer.cs">
+    <Compile Include="Forms\GuestPage.Designer.cs">
       <DependentUpon>GuestPage.cs</DependentUpon>
     </Compile>
     <Compile Include="LibraryDataDataSet.Designer.cs">
@@ -97,10 +97,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryDataDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.cs">
+    <Compile Include="Forms\LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
+    <Compile Include="Forms\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AddBookModel.cs" />
@@ -120,22 +120,22 @@
     <Compile Include="View\IEditBook.cs" />
     <Compile Include="View\IGuest.cs" />
     <Compile Include="View\ILogin.cs" />
-    <EmbeddedResource Include="addBook.resx">
-      <DependentUpon>addBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddBook.resx">
+      <DependentUpon>AddBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminPage.resx">
+    <EmbeddedResource Include="Forms\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeleteBook.resx">
+    <EmbeddedResource Include="Forms\DeleteBook.resx">
       <DependentUpon>DeleteBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditBooks.resx">
-      <DependentUpon>EditBooks.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditBook.resx">
+      <DependentUpon>EditBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GuestPage.resx">
+    <EmbeddedResource Include="Forms\GuestPage.resx">
       <DependentUpon>GuestPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
+    <EmbeddedResource Include="Forms\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -147,6 +147,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="LibraryDataDataSet.xsc">
       <DependentUpon>LibraryDataDataSet.xsd</DependentUpon>
     </None>

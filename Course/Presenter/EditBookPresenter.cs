@@ -10,7 +10,7 @@ namespace Course.Presenter
     {
         IEditBook editBookView;
         EditBookModel editBookModel = new EditBookModel();
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Саша\source\repos\Course\Course\LibraryData.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         public EditBookPresenter(IEditBook view) : base(view)
         {
             editBookView = view;

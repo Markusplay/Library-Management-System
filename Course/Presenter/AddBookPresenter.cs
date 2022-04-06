@@ -7,7 +7,7 @@ namespace Course.Presenter
 {
     class AddBookPresenter
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Саша\source\repos\Course\Course\LibraryData.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         IAddBook addBookView;
         AddBookModel addBook = new AddBookModel();
         public AddBookPresenter(IAddBook view) {addBookView = view;}
