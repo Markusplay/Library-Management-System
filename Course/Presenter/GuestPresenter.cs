@@ -10,10 +10,8 @@ namespace Course.Presenter
         private SqlCommand commandForm;
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         IGuest guestView;
-        public GuestPresenter(IGuest view)
-        {
-            guestView = view;
-        }
+        GuestModel guest= new GuestModel();
+        public GuestPresenter(IGuest view)=> guestView = view;
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
             connection.Open();
@@ -37,7 +35,6 @@ namespace Course.Presenter
             DataTable dtCatalogue = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(commandForm);
             commandForm.CommandType = CommandType.Text;
-            GuestModel guest = new GuestModel();
             guest.Search = guestView.SearchText;
             switch (selectedState)
             {

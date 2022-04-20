@@ -1,6 +1,6 @@
 ﻿namespace Course.View
 {
-    public interface IEditBook : IGuest, IAddBook
+    public interface IEditBook : IDeleteBook
     {
         string DataTitleText { get; set; }
         string DataAuthorText { get; set; }

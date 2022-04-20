@@ -10,11 +10,9 @@ namespace Course.Presenter
     {
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         ILogin loginView;
+        LoginModel login = new LoginModel();
         private int _checkLogin = 0;
-        public LoginPresenter(ILogin view)
-        {
-            loginView = view;
-        }
+        public LoginPresenter(ILogin view)=> loginView = view;
         public void checkConnection()
         {
             if (connection.State == ConnectionState.Open) 
@@ -24,7 +22,6 @@ namespace Course.Presenter
         public void StartAdminPage()
         {
             checkConnection();
-            LoginModel login = new LoginModel();
             login.Username = loginView.UsernameText;
             login.Password = loginView.PasswordText;
             SqlCommand commandLogin = new SqlCommand("SELECT * FROM library_user WHERE Username='" + login.Username + "' AND Password='" + login.Password + "'", connection);
