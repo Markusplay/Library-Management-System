@@ -7,10 +7,10 @@ namespace Course.Presenter
 {
     class GuestPresenter
     {
-        private SqlCommand commandForm;
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         IGuest guestView;
-        GuestModel guest= new GuestModel();
+        private SqlCommand _commandForm;
+        GuestModel guest = new GuestModel();
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         public GuestPresenter(IGuest view)=> guestView = view;
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
@@ -31,33 +31,33 @@ namespace Course.Presenter
         public void SearchInfo(DataGridView dataGridView,string selectedState)
         {
             connection.Open();
-            commandForm = connection.CreateCommand();
+            _commandForm = connection.CreateCommand();
             DataTable dtCatalogue = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(commandForm);
-            commandForm.CommandType = CommandType.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter(_commandForm);
+            _commandForm.CommandType = CommandType.Text;
             guest.Search = guestView.SearchText;
             switch (selectedState)
             {
                 case "Title":
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
                     break;
                 case "Author":
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Author LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Author LIKE('%" + guest.Search + "%')";
                     break;
                 case "Genre":
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Genre LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Genre LIKE('%" + guest.Search + "%')";
                     break;
                 case "Price":
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Price LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Price LIKE('%" + guest.Search + "%')";
                     break;
                 case "Publication year":
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE PublicationYear LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE PublicationYear LIKE('%" + guest.Search + "%')";
                     break;
                 default:
-                    commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
+                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
                     break;
             }
-            commandForm.ExecuteNonQuery();
+            _commandForm.ExecuteNonQuery();
             adapter.Fill(dtCatalogue);
             dataGridView.DataSource = dtCatalogue;
             connection.Close();

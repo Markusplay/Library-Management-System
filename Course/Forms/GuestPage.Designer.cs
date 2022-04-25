@@ -73,6 +73,7 @@ namespace Course
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
             this.comboBox1.FormattingEnabled = true;
@@ -80,7 +81,6 @@ namespace Course
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(143, 25);
             this.comboBox1.TabIndex = 36;
-            this.comboBox1.Text = "Default: Title";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtSearchInEdit
@@ -142,6 +142,7 @@ namespace Course
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "GuestPage";
             this.ShowIcon = false;

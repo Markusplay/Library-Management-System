@@ -21,7 +21,7 @@ namespace Course
             get { return txtGenre.Text; }
             set { txtGenre.Text = value; }
         }
-        public string PriceText 
+        public string PriceText
         {
             get { return txtPrice.Text; }
             set { txtPrice.Text = value; }
@@ -32,11 +32,7 @@ namespace Course
             set { txtYear.Text = value; }
         }
 
-        public addBook()
-        {
-            InitializeComponent();
-        }
-        private void addBook_Load(object sender, EventArgs e){}
+        public addBook() => InitializeComponent();
         private void btnBack_Click(object sender, EventArgs e)
         {
             AdminPage adminPage = new AdminPage();

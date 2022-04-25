@@ -7,8 +7,8 @@ namespace Course.Presenter
 {
     class DeleteBookPresenter : GuestPresenter
     {
-        DeleteBookModel deleteBook = new DeleteBookModel();
         IDeleteBook deleteBookView;
+        DeleteBookModel deleteBook = new DeleteBookModel();
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         public DeleteBookPresenter(IDeleteBook view) : base(view)
         {

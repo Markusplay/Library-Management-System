@@ -8,14 +8,18 @@ namespace Course.Presenter
 {
     class LoginPresenter
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
         ILogin loginView;
         LoginModel login = new LoginModel();
-        private int _checkLogin = 0;
-        public LoginPresenter(ILogin view)=> loginView = view;
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
+        private int _checkLogin { get; set; }
+        public LoginPresenter(ILogin view)
+        {
+            loginView = view;
+            _checkLogin = 0;
+        }
         public void checkConnection()
         {
-            if (connection.State == ConnectionState.Open) 
+            if (connection.State == ConnectionState.Open)
                 connection.Close();
             connection.Open();
         }

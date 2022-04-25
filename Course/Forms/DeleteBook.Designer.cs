@@ -88,6 +88,7 @@ namespace Course
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
             this.comboBox1.FormattingEnabled = true;
@@ -95,7 +96,6 @@ namespace Course
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(143, 25);
             this.comboBox1.TabIndex = 35;
-            this.comboBox1.Text = "Default: Title";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtSearchInDelete
@@ -144,7 +144,7 @@ namespace Course
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
-            // deleteBook
+            // DeleteBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,8 +157,9 @@ namespace Course
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "deleteBook";
+            this.Name = "DeleteBook";
             this.ShowIcon = false;
             this.Text = "Library Management System";
             this.Load += new System.EventHandler(this.deleteBook_Load);

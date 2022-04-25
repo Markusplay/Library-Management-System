@@ -22,23 +22,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Course.Model.GuestModel">
-    <Position X="1" Y="8.25" Width="1.5" />
+    <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>Model\GuestModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course.Model.LoginModel">
-    <Position X="4.75" Y="7.5" Width="1.5" />
+    <Position X="4.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Model\LoginModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Course.Presenter.AddBookPresenter">
-    <Position X="5.25" Y="1.5" Width="1.5" />
+    <Position X="4.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAgICAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAgICAAAAABAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Presenter\AddBookPresenter.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -71,7 +71,7 @@
   <Class Name="Course.Presenter.GuestPresenter">
     <Position X="8" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAACAAAAAAAAABAAAAACAAAAAgAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAACAAAAAAAAABAAAAACIAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Presenter\GuestPresenter.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -80,7 +80,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.LoginPresenter">
-    <Position X="6.75" Y="7" Width="1.5" />
+    <Position X="7" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAFAAAAAAAAAAAAAEAAAEAAEAA=</HashCode>
       <FileName>Presenter\LoginPresenter.cs</FileName>
@@ -119,7 +119,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Course.View.ILogin">
-    <Position X="8.75" Y="7.5" Width="1.5" />
+    <Position X="9.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAA=</HashCode>
       <FileName>View\ILogin.cs</FileName>

@@ -53,6 +53,7 @@ namespace Course
         {
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);
             deleteBookPresenter.DrawTable(dataGridView1, comboBox1);
+            comboBox1.ForeColor = Color.Black;
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -84,15 +85,7 @@ namespace Course
                 txtSearchInDelete.ForeColor = Color.Gray;
             }
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedState = comboBox1.SelectedItem.ToString();
-            if (_selectedState != "Default Title")
-                comboBox1.ForeColor = Color.Black;
-            txtSearchInDelete.Text = "Search term";
-            txtSearchInDelete.ForeColor = Color.Gray;
-        }
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)=> _selectedState = comboBox1.SelectedItem.ToString();
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);

@@ -45,7 +45,6 @@ namespace Course.Presenter
         }
         public void ShowCell()
         {
-
             try
             {
                 connection.Open();

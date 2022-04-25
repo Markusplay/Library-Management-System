@@ -104,6 +104,7 @@ namespace Course
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
             this.comboBox1.FormattingEnabled = true;
@@ -111,7 +112,6 @@ namespace Course
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(143, 25);
             this.comboBox1.TabIndex = 29;
-            this.comboBox1.Text = "Default: Title";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
@@ -150,7 +150,7 @@ namespace Course
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel5.Location = new System.Drawing.Point(136, 389);
+            this.panel5.Location = new System.Drawing.Point(535, 390);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(246, 2);
             this.panel5.TabIndex = 47;
@@ -159,7 +159,7 @@ namespace Course
             // 
             this.Published.AutoSize = true;
             this.Published.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.Published.Location = new System.Drawing.Point(12, 371);
+            this.Published.Location = new System.Drawing.Point(411, 372);
             this.Published.Name = "Published";
             this.Published.Size = new System.Drawing.Size(121, 17);
             this.Published.TabIndex = 45;
@@ -168,7 +168,7 @@ namespace Course
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel4.Location = new System.Drawing.Point(535, 389);
+            this.panel4.Location = new System.Drawing.Point(127, 390);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(246, 2);
             this.panel4.TabIndex = 44;
@@ -178,7 +178,7 @@ namespace Course
             this.txtPrice.BackColor = System.Drawing.SystemColors.Control;
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtPrice.Location = new System.Drawing.Point(534, 368);
+            this.txtPrice.Location = new System.Drawing.Point(126, 369);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(246, 20);
             this.txtPrice.TabIndex = 43;
@@ -186,7 +186,7 @@ namespace Course
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel2.Location = new System.Drawing.Point(535, 333);
+            this.panel2.Location = new System.Drawing.Point(126, 339);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(246, 2);
             this.panel2.TabIndex = 41;
@@ -196,7 +196,7 @@ namespace Course
             this.txtAuthor.BackColor = System.Drawing.SystemColors.Control;
             this.txtAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtAuthor.Location = new System.Drawing.Point(534, 312);
+            this.txtAuthor.Location = new System.Drawing.Point(125, 318);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(246, 20);
             this.txtAuthor.TabIndex = 39;
@@ -222,7 +222,7 @@ namespace Course
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel6.Location = new System.Drawing.Point(135, 333);
+            this.panel6.Location = new System.Drawing.Point(535, 339);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(246, 2);
             this.panel6.TabIndex = 38;
@@ -232,7 +232,7 @@ namespace Course
             this.txtGenre.BackColor = System.Drawing.SystemColors.Control;
             this.txtGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtGenre.Location = new System.Drawing.Point(134, 312);
+            this.txtGenre.Location = new System.Drawing.Point(534, 318);
             this.txtGenre.Name = "txtGenre";
             this.txtGenre.Size = new System.Drawing.Size(246, 20);
             this.txtGenre.TabIndex = 37;
@@ -241,7 +241,7 @@ namespace Course
             // 
             this.Price.AutoSize = true;
             this.Price.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.Price.Location = new System.Drawing.Point(462, 374);
+            this.Price.Location = new System.Drawing.Point(54, 375);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(67, 17);
             this.Price.TabIndex = 36;
@@ -251,7 +251,7 @@ namespace Course
             // 
             this.Genre.AutoSize = true;
             this.Genre.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.Genre.Location = new System.Drawing.Point(79, 318);
+            this.Genre.Location = new System.Drawing.Point(479, 324);
             this.Genre.Name = "Genre";
             this.Genre.Size = new System.Drawing.Size(50, 17);
             this.Genre.TabIndex = 35;
@@ -261,7 +261,7 @@ namespace Course
             // 
             this.Author.AutoSize = true;
             this.Author.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.Author.Location = new System.Drawing.Point(473, 318);
+            this.Author.Location = new System.Drawing.Point(64, 324);
             this.Author.Name = "Author";
             this.Author.Size = new System.Drawing.Size(56, 17);
             this.Author.TabIndex = 34;
@@ -282,12 +282,12 @@ namespace Course
             this.txtYear.BackColor = System.Drawing.SystemColors.Control;
             this.txtYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtYear.Location = new System.Drawing.Point(135, 368);
+            this.txtYear.Location = new System.Drawing.Point(534, 369);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(246, 20);
             this.txtYear.TabIndex = 46;
             // 
-            // editBooks
+            // EditBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -314,8 +314,9 @@ namespace Course
             this.Controls.Add(this.txtSearchInEdit);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "editBooks";
+            this.Name = "EditBooks";
             this.ShowIcon = false;
             this.Text = "Library Management System";
             this.Load += new System.EventHandler(this.editBooks_Load);

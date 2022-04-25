@@ -240,11 +240,11 @@ namespace Course
             this.Controls.Add(this.Author);
             this.Controls.Add(this.Title);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "addBook";
             this.ShowIcon = false;
             this.Text = "Library Management System";
-            this.Load += new System.EventHandler(this.addBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

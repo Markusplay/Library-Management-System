@@ -12,8 +12,8 @@ namespace Course
         private string dataGenre;
         private string dataPrice;
         private string dataYear;
-        private string selectedState;
-        
+        private string _selectedState;
+
         public string SearchText
         {
             get { return txtSearchInEdit.Text; }
@@ -50,7 +50,7 @@ namespace Course
             get { return dataTitle; }
             set { dataTitle = value; }
         }
-        public string DataAuthorText 
+        public string DataAuthorText
         {
             get { return dataAuthor; }
             set { dataAuthor = value; }
@@ -71,35 +71,31 @@ namespace Course
             set { dataYear = value; }
         }
 
-        public EditBooks()
-        {
-            InitializeComponent();
-        }
+        public EditBooks() => InitializeComponent();
+
         private void editBooks_Load(object sender, EventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
             edit.DrawTable(dataGridView1, comboBox1);
+            comboBox1.ForeColor = Color.Black;
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)=> dataGridView1.AutoSize = true;
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) => dataGridView1.AutoSize = true;
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             AdminPage adminPage = new AdminPage();
             Hide();
             adminPage.Show();
         }
+
         private void txtSearchInEdit_KeyUp(object sender, KeyEventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.SearchInfo(dataGridView1, selectedState);
+            edit.SearchInfo(dataGridView1, _selectedState);
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectedState = comboBox1.SelectedItem.ToString();
-            if (selectedState != "Default Title")
-                comboBox1.ForeColor = Color.Black;
-            txtSearchInEdit.Text = "Search term";
-            txtSearchInEdit.ForeColor = Color.Gray;
-        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => _selectedState = comboBox1.SelectedItem.ToString();
 
         private void txtSearchInEdit_Enter(object sender, EventArgs e)
         {
@@ -139,7 +135,6 @@ namespace Course
             catch (Exception) { }
             EditBookPresenter edit = new EditBookPresenter(this);
             edit.ShowCell();
-            
         }
     }
 }
