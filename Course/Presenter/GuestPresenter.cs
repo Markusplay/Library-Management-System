@@ -1,66 +1,122 @@
 ﻿using Course.Model;
 using Course.View;
-using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Data.Entity;
+using System.Data.Entity.Core;
+using System.Data.Entity.SqlServer;
+using System.Linq;
+using System;
+
 namespace Course.Presenter
 {
     class GuestPresenter
     {
-        IGuest guestView;
-        private SqlCommand _commandForm;
-        GuestModel guest = new GuestModel();
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibraryData.mdf;Integrated Security=True");
-        public GuestPresenter(IGuest view)=> guestView = view;
+        IGuestPage guestView;
+        IAddWishList addWish;
+        public GuestPresenter(IGuestPage view)
+        {
+            guestView = view;
+        }
+        public void SetAddInfo(IAddWishList view)
+        {
+            addWish = view;
+        }
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
-            connection.Open();
-            SqlCommand commandGuest = connection.CreateCommand();
-            DataTable dtCatalogue = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(commandGuest);
-            commandGuest.CommandType = CommandType.Text;
-            commandGuest.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog";
-            commandGuest.ExecuteNonQuery();
-            adapter.Fill(dtCatalogue);
-            dataGridView.DataSource = dtCatalogue;
-            dataGridView.AutoResizeColumns();
-            dataGridView.AutoResizeRows();
-            comboBox.Items.AddRange(new string[] { "Title", "Author", "Genre", "Price", "Publication year" });
-            connection.Close();
-        }
-        public void SearchInfo(DataGridView dataGridView,string selectedState)
-        {
-            connection.Open();
-            _commandForm = connection.CreateCommand();
-            DataTable dtCatalogue = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(_commandForm);
-            _commandForm.CommandType = CommandType.Text;
-            guest.Search = guestView.SearchText;
-            switch (selectedState)
+            dataGridView.AutoGenerateColumns = false;
+            using (var context = new Entities())
             {
-                case "Title":
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
-                    break;
-                case "Author":
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Author LIKE('%" + guest.Search + "%')";
-                    break;
-                case "Genre":
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Genre LIKE('%" + guest.Search + "%')";
-                    break;
-                case "Price":
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Price LIKE('%" + guest.Search + "%')";
-                    break;
-                case "Publication year":
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE PublicationYear LIKE('%" + guest.Search + "%')";
-                    break;
-                default:
-                    _commandForm.CommandText = "SELECT Title, Author, Genre, Price, PublicationYear FROM book_catalog WHERE Title LIKE('%" + guest.Search + "%')";
-                    break;
+                dataGridView.DataSource = context.Books.ToList();
+                comboBox.Items.AddRange(new string[] { "Title", "Author", "Genre", "Price", "Publication year" });
             }
-            _commandForm.ExecuteNonQuery();
-            adapter.Fill(dtCatalogue);
-            dataGridView.DataSource = dtCatalogue;
-            connection.Close();
+        }
+        public void ReloadTable(DataGridView dataGridView)
+        {
+            dataGridView.AutoGenerateColumns = false;
+            using (var context = new Entities())
+            {
+                dataGridView.DataSource = context.Books.ToList();
+            }
+        }
+        public void AddBookToWishList()
+        {
+            try
+            {
+                using (var db = new Entities())
+                {
+                    var book = new WishList()
+                    {
+                        GuestID = addWish.GuestID,
+                        Title = addWish.TitleText,
+                        Author = addWish.AuthorText,
+                        Genre = addWish.GenreText,
+                        Price = int.Parse(addWish.PriceText),
+                        PublicationYear = int.Parse(addWish.PublicationYearText)
+                    };
+                    db.WishList.Add(book);
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Book added to wish list successfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong");
+            }
+        }
+        public void TakeInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
+        {
+            var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            int idFind = int.Parse(idCell);
+            using (var context = new Entities())
+            {
+                Books book = context.Books.Single(x => x.Id == idFind);
+                addWish.GuestID = guestID;
+                addWish.TitleText = book.Title;
+                addWish.AuthorText = book.Author;
+                addWish.GenreText = book.Genre;
+                addWish.PriceText = book.Price.ToString();
+                addWish.PublicationYearText = book.PublicationYear.ToString();
+            }
+        }
+        public void LoadWishList(DataGridView dataGridView, int id)
+        {
+            dataGridView.AutoGenerateColumns = false;
+            using (var context = new Entities())
+            {
+                dataGridView.DataSource = context.WishList.Where(x => x.Id == id).ToList();
+            }
+        }
+
+
+        public void SearchInfo(DataGridView dataGridView, string selectedState)
+        {
+            using (var context = new Entities())
+            {
+                string keyWord = guestView.SearchText.Trim();
+                switch (selectedState)
+                {
+                    case "Title":
+                        dataGridView.DataSource = context.Books.Where(x => x.Title.Contains(keyWord)).ToList();
+                        break;
+                    case "Author":
+                        dataGridView.DataSource = context.Books.Where(x => x.Author.Contains(keyWord)).ToList();
+                        break;
+                    case "Genre":
+                        dataGridView.DataSource = context.Books.Where(x => x.Genre.Contains(keyWord)).ToList();
+                        break;
+                    case "Price":
+                        dataGridView.DataSource = context.Books.Where(x => x.Price.ToString().Contains(keyWord)).ToList();
+                        break;
+                    case "Publication year":
+                        dataGridView.DataSource = context.Books.Where(x => x.PublicationYear.ToString().Contains(keyWord)).ToList();
+                        break;
+                    default:
+                        dataGridView.DataSource = context.Books.Where(x => x.Title.Contains(keyWord)).ToList();
+                        break;
+                }
+            }
         }
     }
+
 }

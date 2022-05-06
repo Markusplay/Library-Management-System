@@ -4,7 +4,7 @@ using Course.View;
 using Course.Presenter;
 namespace Course
 {
-    public partial class LoginPage : Form, ILogin
+    public partial class LoginPage : Form, IGuestLog, IAdminLog
     {
         public LoginPage()
         {
@@ -20,18 +20,32 @@ namespace Course
             get { return txtPassword.Text; }
             set { txtPassword.Text = value; }
         }
+
+        public string AdminLoginText
+        {
+            get { return txtUserName.Text; }
+            set { txtUserName.Text = value; }
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginPresenter loginPresenter = new LoginPresenter(this);
-            loginPresenter.StartAdminPage();
+            GuestLogPresenter guest = new GuestLogPresenter(this);
+            guest.StartGuestPage();
         }
         private void Form1_Load(object sender, EventArgs e)
         { }
-        private void SignInGuest_Click(object sender, EventArgs e)
+        private void SignInAdmin_Click(object sender, EventArgs e)
         {
-            GuestPage guestPage = new GuestPage();
-            Hide();
-            guestPage.Show();
+            AdminPresenter admin = new AdminPresenter(this);
+            try
+            {
+                admin.StartAdminPage();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Username or password is incorrect");
+            }
         }
     }
 }

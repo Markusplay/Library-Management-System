@@ -2,16 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Course.View;
+using Course.Model;
 using Course.Presenter;
+using System.Linq;
 namespace Course
 {
     public partial class EditBooks : Form, IEditBook
     {
-        private string dataTitle;
-        private string dataAuthor;
-        private string dataGenre;
-        private string dataPrice;
-        private string dataYear;
         private string _selectedState;
 
         public string SearchText
@@ -44,55 +41,25 @@ namespace Course
             get { return txtYear.Text; }
             set { txtYear.Text = value; }
         }
-
-        public string DataTitleText
-        {
-            get { return dataTitle; }
-            set { dataTitle = value; }
-        }
-        public string DataAuthorText
-        {
-            get { return dataAuthor; }
-            set { dataAuthor = value; }
-        }
-        public string DataGenreText
-        {
-            get { return dataGenre; }
-            set { dataGenre = value; }
-        }
-        public string DataPriceText
-        {
-            get { return dataPrice; }
-            set { dataPrice = value; }
-        }
-        public string DataPublicationYearText
-        {
-            get { return dataYear; }
-            set { dataYear = value; }
-        }
+        public int localId { get; set; }
+        public int userID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public EditBooks() => InitializeComponent();
 
         private void editBooks_Load(object sender, EventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.DrawTable(dataGridView1, comboBox1);
+            edit.DrawTable(dataGridView, comboBox1);
             comboBox1.ForeColor = Color.Black;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) => dataGridView1.AutoSize = true;
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) => dataGridView.AutoSize = true;
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             AdminPage adminPage = new AdminPage();
             Hide();
             adminPage.Show();
-        }
-
-        private void txtSearchInEdit_KeyUp(object sender, KeyEventArgs e)
-        {
-            EditBookPresenter edit = new EditBookPresenter(this);
-            edit.SearchInfo(dataGridView1, _selectedState);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => _selectedState = comboBox1.SelectedItem.ToString();
@@ -118,23 +85,27 @@ namespace Course
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.SaveChanges();
-            edit.DrawTable(dataGridView1, comboBox1);
+            edit.ID = localId;
+            edit.SaveChanges(dataGridView);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                dataTitle = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                dataAuthor = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                dataGenre = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                dataPrice = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                dataYear = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            }
-            catch (Exception) { }
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.ShowCell();
+            edit.ShowCell(dataGridView,e);
+            localId = edit.ID;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            EditBookPresenter edit = new EditBookPresenter(this);
+            edit.SearchInfo(dataGridView, _selectedState);
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            EditBookPresenter edit = new EditBookPresenter(this);
+            edit.ReloadTable(dataGridView);
         }
     }
 }

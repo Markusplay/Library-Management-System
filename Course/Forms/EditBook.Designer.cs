@@ -29,8 +29,17 @@ namespace Course
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnBack = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publicationYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.catalogDataSet = new Course.CatalogDataSet();
             this.txtSearchInEdit = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,7 +60,13 @@ namespace Course
             this.Author = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.booksTableAdapter = new Course.CatalogDataSetTableAdapters.BooksTableAdapter();
+            this.tableAdapterManager = new Course.CatalogDataSetTableAdapters.TableAdapterManager();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBack
@@ -68,23 +83,84 @@ namespace Course
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 63);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 202);
-            this.dataGridView1.TabIndex = 25;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.titleDataGridViewTextBoxColumn,
+            this.authorDataGridViewTextBoxColumn,
+            this.genreDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.publicationYearDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.booksBindingSource;
+            this.dataGridView.Location = new System.Drawing.Point(12, 63);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.Size = new System.Drawing.Size(776, 202);
+            this.dataGridView.TabIndex = 25;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // publicationYearDataGridViewTextBoxColumn
+            // 
+            this.publicationYearDataGridViewTextBoxColumn.DataPropertyName = "PublicationYear";
+            this.publicationYearDataGridViewTextBoxColumn.HeaderText = "PublicationYear";
+            this.publicationYearDataGridViewTextBoxColumn.Name = "publicationYearDataGridViewTextBoxColumn";
+            this.publicationYearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.catalogDataSet;
+            // 
+            // catalogDataSet
+            // 
+            this.catalogDataSet.DataSetName = "CatalogDataSet";
+            this.catalogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtSearchInEdit
             // 
@@ -93,13 +169,12 @@ namespace Course
             this.txtSearchInEdit.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearchInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSearchInEdit.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtSearchInEdit.Location = new System.Drawing.Point(367, 37);
+            this.txtSearchInEdit.Location = new System.Drawing.Point(324, 38);
             this.txtSearchInEdit.Name = "txtSearchInEdit";
             this.txtSearchInEdit.Size = new System.Drawing.Size(246, 19);
             this.txtSearchInEdit.TabIndex = 28;
             this.txtSearchInEdit.Text = "Search term";
             this.txtSearchInEdit.Enter += new System.EventHandler(this.txtSearchInEdit_Enter);
-            this.txtSearchInEdit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchInEdit_KeyUp);
             this.txtSearchInEdit.Leave += new System.EventHandler(this.txtSearchInEdit_Leave);
             // 
             // comboBox1
@@ -108,7 +183,7 @@ namespace Course
             this.comboBox1.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 31);
+            this.comboBox1.Location = new System.Drawing.Point(130, 32);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(143, 25);
             this.comboBox1.TabIndex = 29;
@@ -118,7 +193,7 @@ namespace Course
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.label2.Location = new System.Drawing.Point(211, 11);
+            this.label2.Location = new System.Drawing.Point(168, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 30;
@@ -127,7 +202,7 @@ namespace Course
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel3.Location = new System.Drawing.Point(367, 55);
+            this.panel3.Location = new System.Drawing.Point(324, 56);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(246, 2);
             this.panel3.TabIndex = 31;
@@ -139,9 +214,9 @@ namespace Course
             this.btnSaveEdit.FlatAppearance.BorderSize = 2;
             this.btnSaveEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveEdit.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.btnSaveEdit.Location = new System.Drawing.Point(354, 408);
+            this.btnSaveEdit.Location = new System.Drawing.Point(347, 408);
             this.btnSaveEdit.Name = "btnSaveEdit";
-            this.btnSaveEdit.Size = new System.Drawing.Size(124, 30);
+            this.btnSaveEdit.Size = new System.Drawing.Size(131, 30);
             this.btnSaveEdit.TabIndex = 32;
             this.btnSaveEdit.Text = "Save Changes";
             this.btnSaveEdit.UseVisualStyleBackColor = false;
@@ -287,11 +362,51 @@ namespace Course
             this.txtYear.Size = new System.Drawing.Size(246, 20);
             this.txtYear.TabIndex = 46;
             // 
+            // booksTableAdapter
+            // 
+            this.booksTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AdminsTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = null;
+            // 
+            // btnReload
+            // 
+            this.btnReload.FlatAppearance.BorderSize = 2;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.btnReload.Location = new System.Drawing.Point(663, 22);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(75, 35);
+            this.btnReload.TabIndex = 49;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FlatAppearance.BorderSize = 2;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.btnSearch.Location = new System.Drawing.Point(591, 22);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 35);
+            this.btnSearch.TabIndex = 48;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // EditBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReload);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.Published);
@@ -312,7 +427,7 @@ namespace Course
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtSearchInEdit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.btnBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -320,7 +435,9 @@ namespace Course
             this.ShowIcon = false;
             this.Text = "Library Management System";
             this.Load += new System.EventHandler(this.editBooks_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,7 +445,7 @@ namespace Course
 
         #endregion
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox txtSearchInEdit;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
@@ -349,5 +466,17 @@ namespace Course
         private System.Windows.Forms.Label Author;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.TextBox txtYear;
+        private CatalogDataSet catalogDataSet;
+        private System.Windows.Forms.BindingSource booksBindingSource;
+        private CatalogDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
+        private CatalogDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publicationYearDataGridViewTextBoxColumn;
     }
 }

@@ -96,7 +96,7 @@ namespace Course
             this.lblWelcome.Font = new System.Drawing.Font("Britannic Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.Location = new System.Drawing.Point(112, 194);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(177, 44);
+            this.lblWelcome.Size = new System.Drawing.Size(176, 44);
             this.lblWelcome.TabIndex = 4;
             this.lblWelcome.Text = "Welcome";
             // 
@@ -148,9 +148,9 @@ namespace Course
             this.btnSignInGuest.Name = "btnSignInGuest";
             this.btnSignInGuest.Size = new System.Drawing.Size(177, 33);
             this.btnSignInGuest.TabIndex = 12;
-            this.btnSignInGuest.Text = "Sign in as guest";
+            this.btnSignInGuest.Text = "Sign in as admin";
             this.btnSignInGuest.UseVisualStyleBackColor = false;
-            this.btnSignInGuest.Click += new System.EventHandler(this.SignInGuest_Click);
+            this.btnSignInGuest.Click += new System.EventHandler(this.SignInAdmin_Click);
             // 
             // LoginPage
             // 

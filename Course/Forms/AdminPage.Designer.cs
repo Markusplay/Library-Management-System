@@ -56,7 +56,7 @@ namespace Course
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add Books";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -84,7 +84,7 @@ namespace Course
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete Books";
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.button3_Click);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
