@@ -21,10 +21,16 @@ namespace Course.Presenter
                 }
                 else
                 {
-                    GuestPage guest = new GuestPage(name.Id);
-                    Form.ActiveForm.Hide();
-                    guest.Show();
-
+                    try
+                    {
+                        GuestPage guest = new GuestPage(name.Id);
+                        Form.ActiveForm.Hide();
+                        guest.Show();
+                    }
+                    catch (NullReferenceException)
+                    { }
+                    catch (Exception)
+                    { MessageBox.Show("Something went wrong"); }
 
                 }
             }

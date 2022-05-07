@@ -12,16 +12,12 @@ namespace Course.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class WishList
+    public partial class sysdiagrams
     {
-        public int Id { get; set; }
-        public int GuestID { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> PublicationYear { get; set; }
-    
-        public virtual Users Users { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

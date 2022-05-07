@@ -140,6 +140,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CatalogModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>CatalogModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Users.cs">
       <DependentUpon>CatalogModel.tt</DependentUpon>
     </Compile>
@@ -155,7 +158,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IAddBook.cs" />
-    <Compile Include="View\IAddWishList.cs" />
+    <Compile Include="View\IWishList.cs" />
     <Compile Include="View\IAdminLog.cs" />
     <Compile Include="View\IDeleteBook.cs" />
     <Compile Include="View\IEditBook.cs" />

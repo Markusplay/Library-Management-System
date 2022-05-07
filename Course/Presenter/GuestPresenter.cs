@@ -13,15 +13,9 @@ namespace Course.Presenter
     class GuestPresenter
     {
         IGuestPage guestView;
-        IAddWishList addWish;
-        public GuestPresenter(IGuestPage view)
-        {
-            guestView = view;
-        }
-        public void SetAddInfo(IAddWishList view)
-        {
-            addWish = view;
-        }
+        IWishList Wish;
+        public GuestPresenter(IGuestPage view) => guestView = view;
+        public void SetAddInfo(IWishList view) => Wish = view;
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
             dataGridView.AutoGenerateColumns = false;
@@ -47,12 +41,12 @@ namespace Course.Presenter
                 {
                     var book = new WishList()
                     {
-                        GuestID = addWish.GuestID,
-                        Title = addWish.TitleText,
-                        Author = addWish.AuthorText,
-                        Genre = addWish.GenreText,
-                        Price = int.Parse(addWish.PriceText),
-                        PublicationYear = int.Parse(addWish.PublicationYearText)
+                        GuestID = Wish.GuestID,
+                        Title = Wish.TitleText,
+                        Author = Wish.AuthorText,
+                        Genre = Wish.GenreText,
+                        Price = int.Parse(Wish.PriceText),
+                        PublicationYear = int.Parse(Wish.PublicationYearText)
                     };
                     db.WishList.Add(book);
                     db.SaveChanges();
@@ -64,30 +58,56 @@ namespace Course.Presenter
                 MessageBox.Show("Something went wrong");
             }
         }
-        public void TakeInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
+        public void TakeCatalogInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
         {
             var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             int idFind = int.Parse(idCell);
             using (var context = new Entities())
             {
                 Books book = context.Books.Single(x => x.Id == idFind);
-                addWish.GuestID = guestID;
-                addWish.TitleText = book.Title;
-                addWish.AuthorText = book.Author;
-                addWish.GenreText = book.Genre;
-                addWish.PriceText = book.Price.ToString();
-                addWish.PublicationYearText = book.PublicationYear.ToString();
+                Wish.GuestID = guestID;
+                Wish.TitleText = book.Title;
+                Wish.AuthorText = book.Author;
+                Wish.GenreText = book.Genre;
+                Wish.PriceText = book.Price.ToString();
+                Wish.PublicationYearText = book.PublicationYear.ToString();
             }
         }
-        public void LoadWishList(DataGridView dataGridView, int id)
+        public void TakeWishListInfo(DataGridView dataGridView, DataGridViewCellEventArgs e)
+        {
+            var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            int idFind = int.Parse(idCell);
+            using (var context = new Entities())
+            {
+                var book = context.WishList.Single(x => x.Id == idFind);
+                Wish.WishID = book.Id;
+            }
+        }
+        public void LoadWishList(DataGridView dataGridView, int currentGuestId)
         {
             dataGridView.AutoGenerateColumns = false;
             using (var context = new Entities())
             {
-                dataGridView.DataSource = context.WishList.Where(x => x.Id == id).ToList();
+                dataGridView.DataSource = context.WishList.Where(x => x.GuestID == currentGuestId).ToList();
             }
         }
-
+        public void DeleteBookWishList(int WishID)
+        {
+            try
+            {
+                using (var context = new Entities())
+                {
+                    var delBook = context.WishList.FirstOrDefault(x => x.Id == WishID);
+                    context.WishList.Remove(delBook);
+                    context.SaveChanges();
+                    MessageBox.Show("Book deleted successfully");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong");
+            }
+        }
 
         public void SearchInfo(DataGridView dataGridView, string selectedState)
         {

@@ -14,8 +14,17 @@ namespace Course.Model
     
     public partial class Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users()
+        {
+            this.WishList = new HashSet<WishList>();
+        }
+    
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WishList> WishList { get; set; }
     }
 }

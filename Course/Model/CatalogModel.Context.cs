@@ -29,5 +29,6 @@ namespace Course.Model
         public virtual DbSet<Books> Books { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<WishList> WishList { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

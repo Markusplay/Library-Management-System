@@ -5,10 +5,12 @@ using Course.Presenter;
 using Course.View;
 namespace Course
 {
-    public partial class GuestPage : Form, IGuestPage, IAddWishList
+    public partial class GuestPage : Form, IGuestPage, IWishList
     {
+
         private string _selectedState;
         private int _currentId;
+        private int _wishId;
         public string SearchText
         {
             get { return txtSearch.Text; }
@@ -22,6 +24,7 @@ namespace Course
         }
 
         public int GuestID { get; set; }
+        public int WishID { get; set; }
         public string TitleText { get; set; }
         public string AuthorText { get; set; }
         public string GenreText { get; set; }
@@ -37,9 +40,10 @@ namespace Course
 
         private void GuestPage_Load(object sender, EventArgs e)
         {
+            //this.wishListTableAdapter.Fill(this.catalogDataSet.WishList);
             GuestPresenter guestPresenter = new GuestPresenter(this);
             guestPresenter.DrawTable(dataGridView, comboBox);
-
+            guestPresenter.LoadWishList(dataGridViewWishList, _currentId);
             comboBox.ForeColor = Color.Black;
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) => dataGridView.AutoSize = true;
@@ -64,9 +68,7 @@ namespace Course
 
         private void booksBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             GuestPresenter guestPresenter = new GuestPresenter(this);
@@ -101,14 +103,26 @@ namespace Course
         private void btnLoadWish_Click(object sender, EventArgs e)
         {
             GuestPresenter guestPresenter = new GuestPresenter(this);
-            guestPresenter.LoadWishList(dataGridView, _currentId);
+            guestPresenter.LoadWishList(dataGridViewWishList, _currentId);
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             GuestPresenter guestPresenter = new GuestPresenter(this);
             guestPresenter.SetAddInfo(this);
-            guestPresenter.TakeInfo(dataGridView, e, _currentId);
+            guestPresenter.TakeCatalogInfo(dataGridView, e, _currentId);
         }
+        private void dataGridViewWishList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var idDelCell = dataGridViewWishList.Rows[e.RowIndex].Cells[0].Value;
+            _wishId = (int)idDelCell;
+        }
+        private void btnDeleteWish_Click(object sender, EventArgs e)
+        {
+            GuestPresenter guestPresenter = new GuestPresenter(this);
+            guestPresenter.DeleteBookWishList(_wishId);
+        }
+
+
     }
 }

@@ -20,8 +20,8 @@ namespace Course.Presenter
             {
                 using (var context = new Entities())
                 {
-                    Books Current = new Books() { Id = deleteBookView.userID };
-                    var delBook = context.Books.FirstOrDefault(x => x.Id == Current.Id);
+                    Books SelectedBook = new Books() { Id = deleteBookView.userID };
+                    var delBook = context.Books.FirstOrDefault(x => x.Id == SelectedBook.Id);
                     context.Books.Remove(delBook);
                     context.SaveChanges();
                     MessageBox.Show("Book deleted successfully");

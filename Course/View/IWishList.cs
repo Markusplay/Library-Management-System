@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Course.View
 {
-    public interface IAddWishList : IAddBook
+    public interface IWishList : IAddBook
     {
         int GuestID { get; set; }
+        int WishID { get; set; }
     }
 }

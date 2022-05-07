@@ -41,7 +41,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.GuestLogPresenter">
-    <Position X="10.75" Y="1.75" Width="1.5" />
+    <Position X="10.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Presenter\GuestLogPresenter.cs</FileName>
@@ -51,9 +51,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.GuestPresenter">
-    <Position X="3" Y="2.75" Width="1.5" />
+    <Position X="3" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAACCAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAgAAAIAACDAAAAACAQAAAABACAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Presenter\GuestPresenter.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -77,28 +77,28 @@
   <Interface Name="Course.View.IDeleteBook">
     <Position X="3" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\IDeleteBook.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Course.View.IEditBook" Collapsed="true">
-    <Position X="3" Y="9.5" Width="1.5" />
+    <Position X="3" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\IEditBook.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Course.View.IGuestLog" Collapsed="true">
-    <Position X="10.75" Y="4" Width="1.5" />
+    <Position X="10.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAA=</HashCode>
       <FileName>View\IGuestLog.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Course.View.IGuestPage">
-    <Position X="3" Y="4.75" Width="1.5" />
+    <Position X="3" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\IGuestPage.cs</FileName>
     </TypeIdentifier>
   </Interface>

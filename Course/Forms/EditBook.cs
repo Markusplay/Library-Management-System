@@ -41,8 +41,8 @@ namespace Course
             get { return txtYear.Text; }
             set { txtYear.Text = value; }
         }
-        public int localId { get; set; }
-        public int userID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private int _localId { get; set; }
+        public int userID { get; set; }
 
         public EditBooks() => InitializeComponent();
 
@@ -85,15 +85,15 @@ namespace Course
         private void btnSaveEdit_Click(object sender, EventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.ID = localId;
+            edit.ID = _localId;
             edit.SaveChanges(dataGridView);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             EditBookPresenter edit = new EditBookPresenter(this);
-            edit.ShowCell(dataGridView,e);
-            localId = edit.ID;
+            edit.ShowCell(dataGridView, e);
+            _localId = edit.ID;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
