@@ -13,13 +13,14 @@ namespace Course.Presenter
         {
             editBookView = view;
         }
+        // Save changes in the database after editing information about book
         public void SaveChanges(DataGridView dataGridView)
         {
             using (var context = new Entities())
             {
                 try
                 {
-                    Books book = context.Books.Single(x => x.Id == ID);
+                    Books book = context.Books.Single(x => x.BookID == ID);
                     book.Title = editBookView.TitleText;
                     book.Author = editBookView.AuthorText;
                     book.Genre = editBookView.GenreText;
@@ -37,13 +38,14 @@ namespace Course.Presenter
             }
 
         }
+        // Show book information in appropriate fields after selecting it in the grid
         public void ShowCell(DataGridView dataGridView, DataGridViewCellEventArgs e)
         {
             var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             ID = int.Parse(idCell);
             using (var context = new Entities())
             {
-                Books book = context.Books.Single(x => x.Id == ID);
+                Books book = context.Books.Single(x => x.BookID == ID);
                 editBookView.TitleText = book.Title;
                 editBookView.AuthorText = book.Author;
                 editBookView.GenreText = book.Genre;
@@ -51,5 +53,6 @@ namespace Course.Presenter
                 editBookView.PublicationYearText = book.PublicationYear.ToString();
             }
         }
+        
     }
 }

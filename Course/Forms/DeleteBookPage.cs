@@ -17,13 +17,11 @@ namespace Course
 
         public int userID { get => _ID; set => _ID = value; }
 
-        public DeleteBookPage()
-        {
-            InitializeComponent();
-        }
+        public DeleteBookPage() => InitializeComponent();
 
         private void deleteBook_Load(object sender, EventArgs e)
         {
+            booksTableAdapter.Fill(catalogDataSet.Books);
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);
             deleteBookPresenter.DrawTable(dataGridView, comboBox);
             comboBox.ForeColor = Color.Black;
@@ -53,23 +51,27 @@ namespace Course
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => _selectedState = comboBox.SelectedItem.ToString();
+
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);
             deleteBookPresenter.DeleteBook();
-            deleteBookPresenter.DrawTable(dataGridView, comboBox);
         }
+
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var idDelCell = dataGridView.Rows[e.RowIndex].Cells[0].Value;
             _ID = (int)idDelCell;
         }
+
         private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);
             deleteBookPresenter.SearchInfo(dataGridView, _selectedState);
         }
+
         private void btnReload_Click(object sender, EventArgs e)
         {
             DeleteBookPresenter deleteBookPresenter = new DeleteBookPresenter(this);

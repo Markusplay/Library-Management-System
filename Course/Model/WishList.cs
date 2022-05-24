@@ -22,6 +22,6 @@ namespace Course.Model
         public Nullable<int> Price { get; set; }
         public Nullable<int> PublicationYear { get; set; }
     
-        public virtual Users Users { get; set; }
+        public virtual Guests Guests { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 using Course.View;
 using System.Data;
 using System.Windows.Forms;
-using System.Data.Entity;
-using System.Data.Entity.Core;
-using System.Data.Entity.SqlServer;
 using System.Linq;
 using System;
 
@@ -16,6 +13,7 @@ namespace Course.Presenter
         IWishList Wish;
         public GuestPresenter(IGuestPage view) => guestView = view;
         public void SetAddInfo(IWishList view) => Wish = view;
+        // Load a table which represents catalog
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
             dataGridView.AutoGenerateColumns = false;
@@ -25,6 +23,7 @@ namespace Course.Presenter
                 comboBox.Items.AddRange(new string[] { "Title", "Author", "Genre", "Price", "Publication year" });
             }
         }
+        // Reload a table which represents catalog
         public void ReloadTable(DataGridView dataGridView)
         {
             dataGridView.AutoGenerateColumns = false;
@@ -33,6 +32,7 @@ namespace Course.Presenter
                 dataGridView.DataSource = context.Books.ToList();
             }
         }
+        // Add selected book from the wish list
         public void AddBookToWishList()
         {
             try
@@ -58,13 +58,14 @@ namespace Course.Presenter
                 MessageBox.Show("Something went wrong");
             }
         }
+        // 
         public void TakeCatalogInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
         {
             var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             int idFind = int.Parse(idCell);
             using (var context = new Entities())
             {
-                Books book = context.Books.Single(x => x.Id == idFind);
+                Books book = context.Books.Single(x => x.BookID == idFind);
                 Wish.GuestID = guestID;
                 Wish.TitleText = book.Title;
                 Wish.AuthorText = book.Author;
@@ -73,17 +74,8 @@ namespace Course.Presenter
                 Wish.PublicationYearText = book.PublicationYear.ToString();
             }
         }
-        public void TakeWishListInfo(DataGridView dataGridView, DataGridViewCellEventArgs e)
-        {
-            var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            int idFind = int.Parse(idCell);
-            using (var context = new Entities())
-            {
-                var book = context.WishList.Single(x => x.Id == idFind);
-                Wish.WishID = book.Id;
-            }
-        }
-        public void LoadWishList(DataGridView dataGridView, int currentGuestId)
+        // Refresh the wish list
+        public void RefreshWishList(DataGridView dataGridView, int currentGuestId)
         {
             dataGridView.AutoGenerateColumns = false;
             using (var context = new Entities())
@@ -91,6 +83,7 @@ namespace Course.Presenter
                 dataGridView.DataSource = context.WishList.Where(x => x.GuestID == currentGuestId).ToList();
             }
         }
+        // Delete selected book from the wish list
         public void DeleteBookWishList(int WishID)
         {
             try
@@ -108,7 +101,7 @@ namespace Course.Presenter
                 MessageBox.Show("Something went wrong");
             }
         }
-
+        // Search information inputed in the field "Search term"
         public void SearchInfo(DataGridView dataGridView, string selectedState)
         {
             using (var context = new Entities())
@@ -136,6 +129,39 @@ namespace Course.Presenter
                         break;
                 }
             }
+        }
+
+        // Check if book exists in the wish list
+        public bool BookExist()
+        {
+            using (var db = new Entities())
+            {
+                try
+                {
+                    var book = new WishList()
+                    {
+                        GuestID = Wish.GuestID,
+                        Title = Wish.TitleText,
+                        Author = Wish.AuthorText,
+                        Genre = Wish.GenreText,
+                        Price = int.Parse(Wish.PriceText),
+                        PublicationYear = int.Parse(Wish.PublicationYearText)
+                    };
+                    foreach (var item in db.WishList)
+                    {
+                        if (item.Title == book.Title && item.Author == book.Author && item.Genre == book.Genre && item.Price == book.Price && item.PublicationYear == book.PublicationYear)
+                        {
+                            MessageBox.Show("Book is already in your wish list!");
+                            return true;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Select a book");
+                }
+            }
+            return false;
         }
     }
 

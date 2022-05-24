@@ -1,7 +1,4 @@
 ﻿namespace Course.View
 {
-    public interface IDeleteBook : IGuestPage
-    {
-        
-    }
+    public interface IDeleteBook : IGuestPage { }
 }

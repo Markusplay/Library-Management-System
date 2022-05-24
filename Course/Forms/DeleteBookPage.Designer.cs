@@ -40,11 +40,11 @@ namespace Course
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.catalogDataSet = new Course.CatalogDataSet();
             this.btnDeleteBook = new System.Windows.Forms.Button();
-            this.booksTableAdapter = new Course.CatalogDataSetTableAdapters.BooksTableAdapter();
-            this.tableAdapterManager = new Course.CatalogDataSetTableAdapters.TableAdapterManager();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.booksTableAdapter = new Course.CatalogDataSetTableAdapters.BooksTableAdapter();
+            this.tableAdapterManager = new Course.CatalogDataSetTableAdapters.TableAdapterManager();
+            this.bookIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,7 +140,7 @@ namespace Course
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
+            this.bookIDDataGridViewTextBoxColumn,
             this.titleDataGridViewTextBoxColumn,
             this.authorDataGridViewTextBoxColumn,
             this.genreDataGridViewTextBoxColumn,
@@ -178,18 +178,6 @@ namespace Course
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
-            // booksTableAdapter
-            // 
-            this.booksTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AdminsTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsersTableAdapter = null;
-            // 
             // btnReload
             // 
             this.btnReload.FlatAppearance.BorderSize = 2;
@@ -216,12 +204,27 @@ namespace Course
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // Id
+            // booksTableAdapter
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
+            this.booksTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AdminsTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
+            this.tableAdapterManager.GuestsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = null;
+            this.tableAdapterManager.WishListTableAdapter = null;
+            // 
+            // bookIDDataGridViewTextBoxColumn
+            // 
+            this.bookIDDataGridViewTextBoxColumn.DataPropertyName = "BookID";
+            this.bookIDDataGridViewTextBoxColumn.HeaderText = "BookID";
+            this.bookIDDataGridViewTextBoxColumn.Name = "bookIDDataGridViewTextBoxColumn";
+            this.bookIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bookIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // titleDataGridViewTextBoxColumn
             // 
@@ -297,13 +300,13 @@ namespace Course
         private System.Windows.Forms.TextBox txtSearchInDelete;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnDeleteBook;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button btnSearch;
         private CatalogDataSet catalogDataSet;
         private System.Windows.Forms.BindingSource booksBindingSource;
         private CatalogDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
         private CatalogDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;

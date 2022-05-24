@@ -12,10 +12,10 @@ namespace Course.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Guests
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Guests()
         {
             this.WishList = new HashSet<WishList>();
         }

@@ -36,38 +36,36 @@ namespace Course
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publicationYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.catalogDataSet = new Course.CatalogDataSet();
             this.btnToLogin = new System.Windows.Forms.Button();
-            this.booksTableAdapter = new Course.CatalogDataSetTableAdapters.BooksTableAdapter();
-            this.tableAdapterManager = new Course.CatalogDataSetTableAdapters.TableAdapterManager();
-            this.catalogDataSet1 = new Course.CatalogDataSet();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             this.btnAddWish = new System.Windows.Forms.Button();
             this.btnLoadWish = new System.Windows.Forms.Button();
             this.dataGridViewWishList = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wishListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnDeleteWish = new System.Windows.Forms.Button();
+            this.wishListTableAdapter = new Course.CatalogDataSetTableAdapters.WishListTableAdapter();
+            this.tableAdapterManager = new Course.CatalogDataSetTableAdapters.TableAdapterManager();
+            this.booksTableAdapter = new Course.CatalogDataSetTableAdapters.BooksTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publicationYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.publicationYearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wishListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wishListTableAdapter = new Course.CatalogDataSetTableAdapters.WishListTableAdapter();
-            this.btnDeleteWish = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWishList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishListBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -121,13 +119,13 @@ namespace Course
             this.txtSearch.BackColor = System.Drawing.SystemColors.Control;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.3F);
             this.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtSearch.Location = new System.Drawing.Point(331, 36);
+            this.txtSearch.Location = new System.Drawing.Point(331, 37);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(246, 19);
+            this.txtSearch.Size = new System.Drawing.Size(246, 18);
             this.txtSearch.TabIndex = 35;
-            this.txtSearch.Text = "Search term";
+            this.txtSearch.Text = "Search in catalog";
             this.txtSearch.Enter += new System.EventHandler(this.txtSearchInEdit_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearchInEdit_Leave);
             // 
@@ -143,68 +141,25 @@ namespace Course
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.authorDataGridViewTextBoxColumn,
-            this.genreDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.publicationYearDataGridViewTextBoxColumn});
+            this.bookIDDataGridViewTextBoxColumn,
+            this.titleDataGridViewTextBoxColumn1,
+            this.authorDataGridViewTextBoxColumn1,
+            this.genreDataGridViewTextBoxColumn1,
+            this.priceDataGridViewTextBoxColumn1,
+            this.publicationYearDataGridViewTextBoxColumn1});
             this.dataGridView.DataSource = this.booksBindingSource;
-            this.dataGridView.Location = new System.Drawing.Point(50, 78);
+            this.dataGridView.Location = new System.Drawing.Point(133, 78);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(699, 174);
+            this.dataGridView.Size = new System.Drawing.Size(544, 174);
             this.dataGridView.TabIndex = 34;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // authorDataGridViewTextBoxColumn
-            // 
-            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
-            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
-            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
-            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genreDataGridViewTextBoxColumn
-            // 
-            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
-            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
-            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
-            this.genreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // publicationYearDataGridViewTextBoxColumn
-            // 
-            this.publicationYearDataGridViewTextBoxColumn.DataPropertyName = "PublicationYear";
-            this.publicationYearDataGridViewTextBoxColumn.HeaderText = "PublicationYear";
-            this.publicationYearDataGridViewTextBoxColumn.Name = "publicationYearDataGridViewTextBoxColumn";
-            this.publicationYearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // booksBindingSource
             // 
             this.booksBindingSource.DataMember = "Books";
             this.booksBindingSource.DataSource = this.catalogDataSet;
-            this.booksBindingSource.CurrentChanged += new System.EventHandler(this.booksBindingSource_CurrentChanged);
             // 
             // catalogDataSet
             // 
@@ -224,24 +179,6 @@ namespace Course
             this.btnToLogin.Text = "<< Log out";
             this.btnToLogin.UseVisualStyleBackColor = false;
             this.btnToLogin.Click += new System.EventHandler(this.ToLogin_Click);
-            // 
-            // booksTableAdapter
-            // 
-            this.booksTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AdminsTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsersTableAdapter = null;
-            this.tableAdapterManager.WishListTableAdapter = null;
-            // 
-            // catalogDataSet1
-            // 
-            this.catalogDataSet1.DataSetName = "CatalogDataSet";
-            this.catalogDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnSearch
             // 
@@ -303,37 +240,74 @@ namespace Course
             this.btnLoadWish.TabIndex = 43;
             this.btnLoadWish.Text = "Refresh wish list";
             this.btnLoadWish.UseVisualStyleBackColor = true;
-            this.btnLoadWish.Click += new System.EventHandler(this.btnLoadWish_Click);
+            this.btnLoadWish.Click += new System.EventHandler(this.btnRefreshWish_Click);
             // 
             // dataGridViewWishList
             // 
             this.dataGridViewWishList.AllowUserToAddRows = false;
             this.dataGridViewWishList.AllowUserToDeleteRows = false;
-            this.dataGridViewWishList.AllowUserToOrderColumns = true;
             this.dataGridViewWishList.AutoGenerateColumns = false;
             this.dataGridViewWishList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWishList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn1,
             this.guestIDDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn1,
-            this.authorDataGridViewTextBoxColumn1,
-            this.genreDataGridViewTextBoxColumn1,
-            this.priceDataGridViewTextBoxColumn1,
-            this.publicationYearDataGridViewTextBoxColumn1});
+            this.titleDataGridViewTextBoxColumn,
+            this.authorDataGridViewTextBoxColumn,
+            this.genreDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.publicationYearDataGridViewTextBoxColumn});
             this.dataGridViewWishList.DataSource = this.wishListBindingSource;
-            this.dataGridViewWishList.Location = new System.Drawing.Point(50, 258);
+            this.dataGridViewWishList.Location = new System.Drawing.Point(133, 258);
             this.dataGridViewWishList.Name = "dataGridViewWishList";
             this.dataGridViewWishList.ReadOnly = true;
-            this.dataGridViewWishList.Size = new System.Drawing.Size(699, 143);
+            this.dataGridViewWishList.Size = new System.Drawing.Size(544, 143);
             this.dataGridViewWishList.TabIndex = 44;
             this.dataGridViewWishList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWishList_CellClick);
             // 
-            // idDataGridViewTextBoxColumn1
+            // wishListBindingSource
             // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.wishListBindingSource.DataMember = "WishList";
+            this.wishListBindingSource.DataSource = this.catalogDataSet;
+            // 
+            // btnDeleteWish
+            // 
+            this.btnDeleteWish.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteWish.FlatAppearance.BorderSize = 2;
+            this.btnDeleteWish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteWish.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.btnDeleteWish.Location = new System.Drawing.Point(478, 407);
+            this.btnDeleteWish.Name = "btnDeleteWish";
+            this.btnDeleteWish.Size = new System.Drawing.Size(166, 31);
+            this.btnDeleteWish.TabIndex = 45;
+            this.btnDeleteWish.Text = "Delete from wish list";
+            this.btnDeleteWish.UseVisualStyleBackColor = false;
+            this.btnDeleteWish.Click += new System.EventHandler(this.btnDeleteWish_Click);
+            // 
+            // wishListTableAdapter
+            // 
+            this.wishListTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AdminsTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
+            this.tableAdapterManager.GuestsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = null;
+            this.tableAdapterManager.WishListTableAdapter = this.wishListTableAdapter;
+            // 
+            // booksTableAdapter
+            // 
+            this.booksTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // guestIDDataGridViewTextBoxColumn
             // 
@@ -341,6 +315,50 @@ namespace Course
             this.guestIDDataGridViewTextBoxColumn.HeaderText = "GuestID";
             this.guestIDDataGridViewTextBoxColumn.Name = "guestIDDataGridViewTextBoxColumn";
             this.guestIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.guestIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genreDataGridViewTextBoxColumn
+            // 
+            this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
+            this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
+            this.genreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // publicationYearDataGridViewTextBoxColumn
+            // 
+            this.publicationYearDataGridViewTextBoxColumn.DataPropertyName = "PublicationYear";
+            this.publicationYearDataGridViewTextBoxColumn.HeaderText = "PublicationYear";
+            this.publicationYearDataGridViewTextBoxColumn.Name = "publicationYearDataGridViewTextBoxColumn";
+            this.publicationYearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookIDDataGridViewTextBoxColumn
+            // 
+            this.bookIDDataGridViewTextBoxColumn.DataPropertyName = "BookID";
+            this.bookIDDataGridViewTextBoxColumn.HeaderText = "BookID";
+            this.bookIDDataGridViewTextBoxColumn.Name = "bookIDDataGridViewTextBoxColumn";
+            this.bookIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bookIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // titleDataGridViewTextBoxColumn1
             // 
@@ -377,29 +395,6 @@ namespace Course
             this.publicationYearDataGridViewTextBoxColumn1.Name = "publicationYearDataGridViewTextBoxColumn1";
             this.publicationYearDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // wishListBindingSource
-            // 
-            this.wishListBindingSource.DataMember = "WishList";
-            this.wishListBindingSource.DataSource = this.catalogDataSet;
-            // 
-            // wishListTableAdapter
-            // 
-            this.wishListTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnDeleteWish
-            // 
-            this.btnDeleteWish.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDeleteWish.FlatAppearance.BorderSize = 2;
-            this.btnDeleteWish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteWish.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.btnDeleteWish.Location = new System.Drawing.Point(478, 407);
-            this.btnDeleteWish.Name = "btnDeleteWish";
-            this.btnDeleteWish.Size = new System.Drawing.Size(166, 31);
-            this.btnDeleteWish.TabIndex = 45;
-            this.btnDeleteWish.Text = "Delete from wish list";
-            this.btnDeleteWish.UseVisualStyleBackColor = false;
-            this.btnDeleteWish.Click += new System.EventHandler(this.btnDeleteWish_Click);
-            // 
             // GuestPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,7 +423,6 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWishList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishListBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -444,32 +438,32 @@ namespace Course
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnToLogin;
-        private CatalogDataSet catalogDataSet;
-        private System.Windows.Forms.BindingSource booksBindingSource;
-        private CatalogDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
-        private CatalogDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private CatalogDataSet catalogDataSet1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnAddWish;
         private System.Windows.Forms.Button btnLoadWish;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridViewWishList;
+        private System.Windows.Forms.Button btnDeleteWish;
+        private CatalogDataSet catalogDataSet;
+        private System.Windows.Forms.BindingSource wishListBindingSource;
+        private CatalogDataSetTableAdapters.WishListTableAdapter wishListTableAdapter;
+        private CatalogDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private CatalogDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
+        private System.Windows.Forms.BindingSource booksBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn guestIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn publicationYearDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridViewWishList;
-        private System.Windows.Forms.BindingSource wishListBindingSource;
-        private CatalogDataSetTableAdapters.WishListTableAdapter wishListTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn guestIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn publicationYearDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.Button btnDeleteWish;
     }
 }

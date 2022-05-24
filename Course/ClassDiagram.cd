@@ -1,106 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Course.Presenter.AddBookPresenter">
-    <Position X="9.25" Y="4.75" Width="1.5" />
+    <Position X="11.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAgACAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Presenter\AddBookPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="addBookView" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.AdminPresenter">
-    <Position X="8.5" Y="1.5" Width="1.5" />
+    <Position X="15" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Presenter\AdminPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="adminView" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.DeleteBookPresenter">
-    <Position X="6" Y="3" Width="1.5" />
+    <Position X="10.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Presenter\DeleteBookPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="deleteBookView" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.EditBookPresenter">
-    <Position X="0.5" Y="3.75" Width="1.5" />
+    <Position X="7.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gCAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Presenter\EditBookPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="editBookView" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.GuestLogPresenter">
-    <Position X="10.75" Y="1.5" Width="1.5" />
+    <Position X="13.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Presenter\GuestLogPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="guestLogView" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Course.Presenter.GuestPresenter">
-    <Position X="3" Y="1" Width="1.5" />
+    <Position X="9" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAgAAAIAACDAAAAACAQAAAABACAAAAAAAABAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAIAACCAAAAACAQAAAABAiAQAAAAAABAAAAAAAA=</HashCode>
       <FileName>Presenter\GuestPresenter.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="guestView" />
-    </ShowAsAssociation>
   </Class>
-  <Interface Name="Course.View.IAddBook" Collapsed="true">
-    <Position X="6" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAQAAIAAAAAAAAAAAAAAAEAAgAAAAAAAA=</HashCode>
-      <FileName>View\IAddBook.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Course.View.IAdminLog" Collapsed="true">
-    <Position X="8.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAA=</HashCode>
-      <FileName>View\IAdminLog.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Course.View.IDeleteBook">
-    <Position X="3" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>View\IDeleteBook.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Course.View.IEditBook" Collapsed="true">
-    <Position X="3" Y="8.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>View\IEditBook.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Course.View.IGuestLog" Collapsed="true">
-    <Position X="10.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAA=</HashCode>
-      <FileName>View\IGuestLog.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Course.View.IGuestPage">
-    <Position X="3" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>View\IGuestPage.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

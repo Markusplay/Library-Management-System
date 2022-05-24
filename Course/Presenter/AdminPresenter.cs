@@ -3,13 +3,13 @@ using Course.Model;
 using Course.View;
 using System.Windows.Forms;
 using System.Linq;
-using System.Data.Entity;
 namespace Course.Presenter
 {
     class AdminPresenter
     {
         IAdminLog adminView;
         public AdminPresenter(IAdminLog view) => adminView = view;
+        // Check the correction of inputed data and start admin`s page
         public void StartAdminPage()
         {
             using (Entities context = new Entities())
@@ -22,9 +22,13 @@ namespace Course.Presenter
                 }
                 else
                 {
-                    AdminPage adminPage = new AdminPage();
-                    Form.ActiveForm.Hide();
-                    adminPage.Show();
+                    try
+                    {
+                        AdminPage adminPage = new AdminPage();
+                        Form.ActiveForm.Hide();
+                        adminPage.Show();
+                    }
+                    catch (NullReferenceException) { }
                 }
             }
         }

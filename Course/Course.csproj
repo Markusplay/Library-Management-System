@@ -140,10 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CatalogModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>CatalogModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Users.cs">
+    <Compile Include="Model\Guests.cs">
       <DependentUpon>CatalogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\WishList.cs">

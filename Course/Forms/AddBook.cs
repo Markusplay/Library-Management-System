@@ -33,6 +33,7 @@ namespace Course
         }
 
         public addBook() => InitializeComponent();
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             AdminPage adminPage = new AdminPage();
@@ -43,7 +44,10 @@ namespace Course
         private void btnAddToCatalogue_Click(object sender, EventArgs e)
         {
             AddBookPresenter addBookPresenter = new AddBookPresenter(this);
-            addBookPresenter.AddBookToCatalog();
+            if (!addBookPresenter.BookExist())
+            {
+                addBookPresenter.AddBookToCatalog();
+            } 
         }
     }
 }

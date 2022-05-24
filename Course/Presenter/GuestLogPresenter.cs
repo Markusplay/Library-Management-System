@@ -9,12 +9,13 @@ namespace Course.Presenter
     {
         IGuestLog guestLogView;
         public GuestLogPresenter(IGuestLog view) => guestLogView = view;
+        // Check the correction of inputed data and start guest`s page
         public void StartGuestPage()
         {
             using (Entities context = new Entities())
             {
-                var name = context.Users.FirstOrDefault(a => a.Username == guestLogView.UsernameText);
-                var pass = context.Users.FirstOrDefault(p => p.Password == guestLogView.PasswordText);
+                var name = context.Guests.FirstOrDefault(a => a.Username == guestLogView.UsernameText);
+                var pass = context.Guests.FirstOrDefault(p => p.Password == guestLogView.PasswordText);
                 if (name == null || pass == null || name.Id != pass.Id)
                 {
                     MessageBox.Show("Username or password is incorrect");
@@ -27,11 +28,7 @@ namespace Course.Presenter
                         Form.ActiveForm.Hide();
                         guest.Show();
                     }
-                    catch (NullReferenceException)
-                    { }
-                    catch (Exception)
-                    { MessageBox.Show("Something went wrong"); }
-
+                    catch (Exception) { }
                 }
             }
         }

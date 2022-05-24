@@ -48,6 +48,8 @@ namespace Course
 
         private void editBooks_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'catalogDataSet.Books' table. You can move, or remove it, as needed.
+            this.booksTableAdapter.Fill(this.catalogDataSet.Books);
             EditBookPresenter edit = new EditBookPresenter(this);
             edit.DrawTable(dataGridView, comboBox1);
             comboBox1.ForeColor = Color.Black;
