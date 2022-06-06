@@ -119,7 +119,10 @@
     <Compile Include="Forms\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Admins.cs">
+    <Compile Include="Model\AdminNames.cs">
+      <DependentUpon>CatalogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AdminPasswords.cs">
       <DependentUpon>CatalogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Books.cs">
@@ -139,6 +142,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CatalogModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Genres.cs">
+      <DependentUpon>CatalogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Guests.cs">
       <DependentUpon>CatalogModel.tt</DependentUpon>
@@ -190,6 +196,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.Config" />
+    <EntityDeploy Include="Model\CatalogModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CatalogModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="CatalogDataSet.xsc">
       <DependentUpon>CatalogDataSet.xsd</DependentUpon>
     </None>
@@ -201,11 +211,6 @@
     <None Include="CatalogDataSet.xss">
       <DependentUpon>CatalogDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ClassDiagram.cd" />
-    <EntityDeploy Include="Model\CatalogModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CatalogModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Model\CatalogModel.edmx.diagram">
       <DependentUpon>CatalogModel.edmx</DependentUpon>
     </None>

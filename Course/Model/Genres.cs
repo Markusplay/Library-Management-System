@@ -12,22 +12,18 @@ namespace Course.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Books
+    public partial class Genres
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Books()
+        public Genres()
         {
-            this.Genres = new HashSet<Genres>();
+            this.Books = new HashSet<Books>();
         }
     
-        public int BookID { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public int GenreId { get; set; }
         public string Genre { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> PublicationYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Genres> Genres { get; set; }
+        public virtual ICollection<Books> Books { get; set; }
     }
 }

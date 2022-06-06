@@ -128,5 +128,10 @@ namespace Course
             var idDelCell = dataGridViewWishList.Rows[e.RowIndex].Cells[0].Value;
             _wishId = (int)idDelCell;
         }
+
+        private void dataGridViewWishList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridViewWishList.AutoSize = true;
+        }
     }
 }

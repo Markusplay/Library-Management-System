@@ -210,12 +210,10 @@ namespace Course
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.AdminsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BooksTableAdapter = this.booksTableAdapter;
             this.tableAdapterManager.GuestsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Course.CatalogDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsersTableAdapter = null;
             this.tableAdapterManager.WishListTableAdapter = null;
             // 
             // bookIDDataGridViewTextBoxColumn

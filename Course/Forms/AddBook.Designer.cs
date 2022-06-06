@@ -29,12 +29,12 @@ namespace Course
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Title = new System.Windows.Forms.Label();
             this.Author = new System.Windows.Forms.Label();
             this.Genre = new System.Windows.Forms.Label();
             this.Price = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtGenre = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,6 +46,12 @@ namespace Course
             this.txtYear = new System.Windows.Forms.TextBox();
             this.btnAddToCatalogue = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.comboBoxGenres = new System.Windows.Forms.ComboBox();
+            this.genresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.catalogDataSet = new Course.CatalogDataSet();
+            this.genresTableAdapter = new Course.CatalogDataSetTableAdapters.GenresTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.genresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // Title
@@ -95,16 +101,6 @@ namespace Course
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(246, 2);
             this.panel3.TabIndex = 11;
-            // 
-            // txtGenre
-            // 
-            this.txtGenre.BackColor = System.Drawing.SystemColors.Control;
-            this.txtGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtGenre.Location = new System.Drawing.Point(291, 176);
-            this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(246, 20);
-            this.txtGenre.TabIndex = 10;
             // 
             // panel1
             // 
@@ -216,12 +212,43 @@ namespace Course
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // comboBoxGenres
+            // 
+            this.comboBoxGenres.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxGenres.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.genresBindingSource, "Genre", true));
+            this.comboBoxGenres.DataSource = this.genresBindingSource;
+            this.comboBoxGenres.DisplayMember = "Genre";
+            this.comboBoxGenres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGenres.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.comboBoxGenres.FormattingEnabled = true;
+            this.comboBoxGenres.Location = new System.Drawing.Point(293, 171);
+            this.comboBoxGenres.Name = "comboBoxGenres";
+            this.comboBoxGenres.Size = new System.Drawing.Size(246, 25);
+            this.comboBoxGenres.TabIndex = 21;
+            this.comboBoxGenres.ValueMember = "Genre";
+            this.comboBoxGenres.SelectedIndexChanged += new System.EventHandler(this.comboBoxGenres_SelectedIndexChanged);
+            // 
+            // genresBindingSource
+            // 
+            this.genresBindingSource.DataMember = "Genres";
+            this.genresBindingSource.DataSource = this.catalogDataSet;
+            // 
+            // catalogDataSet
+            // 
+            this.catalogDataSet.DataSetName = "CatalogDataSet";
+            this.catalogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // genresTableAdapter
+            // 
+            this.genresTableAdapter.ClearBeforeFill = true;
+            // 
             // addBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBoxGenres);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddToCatalogue);
             this.Controls.Add(this.panel5);
@@ -234,7 +261,6 @@ namespace Course
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txtGenre);
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Genre);
             this.Controls.Add(this.Author);
@@ -245,6 +271,9 @@ namespace Course
             this.Name = "addBook";
             this.ShowIcon = false;
             this.Text = "Library Management System";
+            this.Load += new System.EventHandler(this.addBook_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.genresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,7 +286,6 @@ namespace Course
         private System.Windows.Forms.Label Genre;
         private System.Windows.Forms.Label Price;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtGenre;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Panel panel2;
@@ -269,5 +297,9 @@ namespace Course
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Button btnAddToCatalogue;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ComboBox comboBoxGenres;
+        private CatalogDataSet catalogDataSet;
+        private System.Windows.Forms.BindingSource genresBindingSource;
+        private CatalogDataSetTableAdapters.GenresTableAdapter genresTableAdapter;
     }
 }

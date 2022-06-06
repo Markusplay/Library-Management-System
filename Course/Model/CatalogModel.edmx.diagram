@@ -4,12 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="baae2a793f0e479184d9074350abda27" Name="Diagram1">
-        <EntityTypeShape EntityType="CatalogModel.Admins" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatalogModel.Books" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="aeb62555f9e14b96b26f093f80e7f714" Name="Diagram1">
+        <EntityTypeShape EntityType="CatalogModel.AdminNames" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogModel.AdminPasswords" Width="1.5" PointX="4" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatalogModel.Books" Width="1.5" PointX="10" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CatalogModel.Guests" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CatalogModel.WishList" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="CatalogModel.FK_WishList_Guests" ManuallyRouted="false" />
+        <AssociationConnector Association="CatalogModel.FK_AdminNames_AdminPasswords" />
+        <EntityTypeShape EntityType="CatalogModel.Genres" Width="1.5" PointX="6.5" PointY="2" />
+        <AssociationConnector Association="CatalogModel.BookGenre" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

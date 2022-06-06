@@ -14,9 +14,9 @@ namespace Course.Presenter
         {
             using (Entities context = new Entities())
             {
-                var name = context.Admins.FirstOrDefault(a => a.AdminName == adminView.AdminLoginText);
-                var pass = context.Admins.FirstOrDefault(p => p.Password == adminView.PasswordText);
-                if (name == null || pass == null || name.Id != pass.Id)
+                var name = context.AdminNames.FirstOrDefault(a => a.Name == adminView.AdminLoginText);
+                var pass = context.AdminPasswords.FirstOrDefault(p => p.Password == adminView.PasswordText);
+                if (name == null || pass == null || name.AdminId != pass.PasswordId)
                 {
                     MessageBox.Show("Username or password is incorrect");
                 }
@@ -24,11 +24,14 @@ namespace Course.Presenter
                 {
                     try
                     {
-                        AdminPage adminPage = new AdminPage();
                         Form.ActiveForm.Hide();
+                        AdminPage adminPage = new AdminPage();
                         adminPage.Show();
                     }
-                    catch (NullReferenceException) { }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Repeat response");
+                    }
                 }
             }
         }

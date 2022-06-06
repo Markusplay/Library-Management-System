@@ -25,9 +25,11 @@ namespace Course.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Admins> Admins { get; set; }
+        public virtual DbSet<AdminNames> AdminNames { get; set; }
+        public virtual DbSet<AdminPasswords> AdminPasswords { get; set; }
         public virtual DbSet<Books> Books { get; set; }
         public virtual DbSet<Guests> Guests { get; set; }
         public virtual DbSet<WishList> WishList { get; set; }
+        public virtual DbSet<Genres> Genres { get; set; }
     }
 }

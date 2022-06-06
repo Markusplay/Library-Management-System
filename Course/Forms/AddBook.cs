@@ -6,6 +6,7 @@ namespace Course
 {
     public partial class addBook : Form, IAddBook
     {
+        private string _selectedGenre;
         public string TitleText
         {
             get { return txtTitle.Text; }
@@ -18,8 +19,8 @@ namespace Course
         }
         public string GenreText
         {
-            get { return txtGenre.Text; }
-            set { txtGenre.Text = value; }
+            get { return _selectedGenre; }
+            set { _selectedGenre = value; }
         }
         public string PriceText
         {
@@ -41,13 +42,24 @@ namespace Course
             adminPage.Show();
         }
 
+        private void comboBoxGenres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedGenre = comboBoxGenres.SelectedValue.ToString();
+        }
+
         private void btnAddToCatalogue_Click(object sender, EventArgs e)
         {
             AddBookPresenter addBookPresenter = new AddBookPresenter(this);
-            if (!addBookPresenter.BookExist())
+
+            if (!addBookPresenter.BookExist(_selectedGenre))
             {
-                addBookPresenter.AddBookToCatalog();
-            } 
+                addBookPresenter.AddBookToCatalog(_selectedGenre);
+            }
+        }
+
+        private void addBook_Load(object sender, EventArgs e)
+        {
+            this.genresTableAdapter.Fill(this.catalogDataSet.Genres);
         }
     }
 }

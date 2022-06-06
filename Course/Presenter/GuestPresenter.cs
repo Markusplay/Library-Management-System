@@ -58,7 +58,7 @@ namespace Course.Presenter
                 MessageBox.Show("Something went wrong");
             }
         }
-        // 
+        // Take information from Catalog
         public void TakeCatalogInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
         {
             var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();

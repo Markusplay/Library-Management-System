@@ -13,12 +13,11 @@ namespace Course.Presenter
         {
             addBookView.TitleText = "";
             addBookView.AuthorText = "";
-            addBookView.GenreText = "";
             addBookView.PriceText = "";
             addBookView.PublicationYearText = "";
         }
         // Add a book into the catalog
-        public void AddBookToCatalog()
+        public void AddBookToCatalog(string genre)
         {
             try
             {
@@ -28,15 +27,22 @@ namespace Course.Presenter
                     {
                         Title = addBookView.TitleText,
                         Author = addBookView.AuthorText,
-                        Genre = addBookView.GenreText,
+                        Genre = genre,
                         Price = int.Parse(addBookView.PriceText),
                         PublicationYear = int.Parse(addBookView.PublicationYearText)
                     };
-                    db.Books.Add(book);
-                    db.SaveChanges();
-                    ClearFields();
+                    if (book.PublicationYear <= 2022 && book.PublicationYear>0 && book.Price>0)
+                    {
+                        db.Books.Add(book);
+                        db.SaveChanges();
+                        ClearFields();
+                        MessageBox.Show("Book added successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect data");
+                    }
                 }
-                MessageBox.Show("Book added successfully");
             }
             catch (Exception)
             {
@@ -45,18 +51,18 @@ namespace Course.Presenter
 
         }
         // Check if a book exists in the catalog and throw the notification
-        public bool BookExist()
+        public bool BookExist(string genre)
         {
             using (var db = new Entities())
             {
-                WishList book = null ;
+                WishList book = null;
                 try
                 {
                     book = new WishList()
                     {
                         Title = addBookView.TitleText,
                         Author = addBookView.AuthorText,
-                        Genre = addBookView.GenreText,
+                        Genre = genre,
                         Price = int.Parse(addBookView.PriceText),
                         PublicationYear = int.Parse(addBookView.PublicationYearText)
                     };
@@ -74,7 +80,6 @@ namespace Course.Presenter
                 {
                     MessageBox.Show("Please fill all fields");
                 }
-
             }
             return false;
         }
