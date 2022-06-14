@@ -40,7 +40,7 @@ namespace Course
             try
             {
                 admin.StartAdminPage();
-
+                Hide();
             }
             catch (Exception)
             {

@@ -24,7 +24,6 @@ namespace Course.Presenter
                 {
                     try
                     {
-                        Form.ActiveForm.Hide();
                         AdminPage adminPage = new AdminPage();
                         adminPage.Show();
                     }

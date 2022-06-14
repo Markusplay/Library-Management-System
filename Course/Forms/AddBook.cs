@@ -32,6 +32,11 @@ namespace Course
             get { return txtYear.Text; }
             set { txtYear.Text = value; }
         }
+        public string NewGenreText
+        {
+            get { return txtNewGenre.Text; }
+            set { txtNewGenre.Text = value; }
+        }
 
         public addBook() => InitializeComponent();
 
@@ -60,6 +65,12 @@ namespace Course
         private void addBook_Load(object sender, EventArgs e)
         {
             this.genresTableAdapter.Fill(this.catalogDataSet.Genres);
+        }
+
+        private void btnAddNewGenre_Click(object sender, EventArgs e)
+        {
+            AddBookPresenter addBookPresenter = new AddBookPresenter(this);
+            addBookPresenter.AddNewGenre(NewGenreText);
         }
     }
 }

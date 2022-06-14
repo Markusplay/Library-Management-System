@@ -11,6 +11,8 @@ namespace Course.Presenter
     {
         IGuestPage guestView;
         IWishList Wish;
+        public virtual void ClearFields() { }
+        public GuestPresenter(){ }
         public GuestPresenter(IGuestPage view) => guestView = view;
         public void SetAddInfo(IWishList view) => Wish = view;
         // Load a table which represents catalog

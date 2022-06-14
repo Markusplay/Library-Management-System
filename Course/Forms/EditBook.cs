@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using Course.View;
 using Course.Model;
 using Course.Presenter;
-using System.Linq;
 namespace Course
 {
     public partial class EditBooks : Form, IEditBook

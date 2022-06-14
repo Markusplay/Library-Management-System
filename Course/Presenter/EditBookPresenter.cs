@@ -13,6 +13,14 @@ namespace Course.Presenter
         {
             editBookView = view;
         }
+        public override void ClearFields()
+        {
+            editBookView.TitleText = "";
+            editBookView.AuthorText = "";
+            editBookView.GenreText = "";
+            editBookView.PriceText = "";
+            editBookView.PublicationYearText = "";
+        }
         // Save changes in the database after editing information about book
         public void SaveChanges(DataGridView dataGridView)
         {
@@ -28,11 +36,6 @@ namespace Course.Presenter
                     book.PublicationYear = int.Parse(editBookView.PublicationYearText);
                     context.SaveChanges();
                     MessageBox.Show("Book`s info changed successfully");
-                    editBookView.TitleText = "";
-                    editBookView.AuthorText = "";
-                    editBookView.GenreText = "";
-                    editBookView.PriceText = "";
-                    editBookView.PublicationYearText = "";
                 }
                 catch (Exception) { MessageBox.Show("Something went wrong"); }
             }
@@ -53,6 +56,6 @@ namespace Course.Presenter
                 editBookView.PublicationYearText = book.PublicationYear.ToString();
             }
         }
-        
+
     }
 }
