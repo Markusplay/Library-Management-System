@@ -1,7 +1,7 @@
 ﻿
 namespace Course
 {
-    partial class addBook
+    partial class AddBookPage
     {
         /// <summary>
         /// Required designer variable.
@@ -279,7 +279,7 @@ namespace Course
             this.panel6.Size = new System.Drawing.Size(246, 2);
             this.panel6.TabIndex = 19;
             // 
-            // addBook
+            // AddBookPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,7 +308,7 @@ namespace Course
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "addBook";
+            this.Name = "AddBookPage";
             this.ShowIcon = false;
             this.Text = "Library Management System";
             this.Load += new System.EventHandler(this.addBook_Load);

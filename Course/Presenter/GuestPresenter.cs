@@ -15,6 +15,10 @@ namespace Course.Presenter
         public GuestPresenter(){ }
         public GuestPresenter(IGuestPage view) => guestView = view;
         public void SetAddInfo(IWishList view) => Wish = view;
+        public static void ShowError(Exception exception)
+        {
+            MessageBox.Show("Error:" + exception.Message);
+        }
         // Load a table which represents catalog
         public void DrawTable(DataGridView dataGridView, ComboBox comboBox)
         {
@@ -63,18 +67,22 @@ namespace Course.Presenter
         // Take information from Catalog
         public void TakeCatalogInfo(DataGridView dataGridView, DataGridViewCellEventArgs e, int guestID)
         {
-            var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            int idFind = int.Parse(idCell);
-            using (var context = new Entities())
-            {
-                Books book = context.Books.Single(x => x.BookID == idFind);
-                Wish.GuestID = guestID;
-                Wish.TitleText = book.Title;
-                Wish.AuthorText = book.Author;
-                Wish.GenreText = book.Genre;
-                Wish.PriceText = book.Price.ToString();
-                Wish.PublicationYearText = book.PublicationYear.ToString();
+            try 
+            { 
+                var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int idFind = int.Parse(idCell);
+                using (var context = new Entities())
+                {
+                    Books book = context.Books.Single(x => x.BookID == idFind);
+                    Wish.GuestID = guestID;
+                    Wish.TitleText = book.Title;
+                    Wish.AuthorText = book.Author;
+                    Wish.GenreText = book.Genre;
+                    Wish.PriceText = book.Price.ToString();
+                    Wish.PublicationYearText = book.PublicationYear.ToString();
+                }
             }
+            catch (Exception) { }
         }
         // Refresh the wish list
         public void RefreshWishList(DataGridView dataGridView, int currentGuestId)
@@ -134,7 +142,7 @@ namespace Course.Presenter
         }
 
         // Check if book exists in the wish list
-        public bool BookExist()
+        public bool BookExistInWishlist()
         {
             using (var db = new Entities())
             {
@@ -142,7 +150,6 @@ namespace Course.Presenter
                 {
                     var book = new WishList()
                     {
-                        GuestID = Wish.GuestID,
                         Title = Wish.TitleText,
                         Author = Wish.AuthorText,
                         Genre = Wish.GenreText,

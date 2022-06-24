@@ -10,7 +10,7 @@ namespace Course.Presenter
         IGuestLog guestLogView;
         public GuestLogPresenter(IGuestLog view) => guestLogView = view;
         // Check the correction of inputed data and start guest`s page
-        public void StartGuestPage()
+        public bool StartGuestPage()
         {
             using (Entities context = new Entities())
             {
@@ -19,17 +19,18 @@ namespace Course.Presenter
                 if (name == null || pass == null || name.Id != pass.Id)
                 {
                     MessageBox.Show("Username or password is incorrect");
+                    return false;
                 }
                 else
                 {
                     try
                     {
                         GuestPage guest = new GuestPage(name.Id);
-                        Form.ActiveForm.Hide();
                         guest.Show();
                     }
                     catch (Exception) { }
                 }
+                return true;
             }
         }
     }

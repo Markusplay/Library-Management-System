@@ -37,24 +37,28 @@ namespace Course.Presenter
                     context.SaveChanges();
                     MessageBox.Show("Book`s info changed successfully");
                 }
-                catch (Exception) { MessageBox.Show("Something went wrong"); }
+                catch (Exception ex) { ShowError(ex); }
             }
 
         }
         // Show book information in appropriate fields after selecting it in the grid
         public void ShowCell(DataGridView dataGridView, DataGridViewCellEventArgs e)
         {
-            var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            ID = int.Parse(idCell);
-            using (var context = new Entities())
+            try
             {
-                Books book = context.Books.Single(x => x.BookID == ID);
-                editBookView.TitleText = book.Title;
-                editBookView.AuthorText = book.Author;
-                editBookView.GenreText = book.Genre;
-                editBookView.PriceText = book.Price.ToString();
-                editBookView.PublicationYearText = book.PublicationYear.ToString();
+                var idCell = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                ID = int.Parse(idCell);
+                using (var context = new Entities())
+                {
+                    Books book = context.Books.Single(x => x.BookID == ID);
+                    editBookView.TitleText = book.Title;
+                    editBookView.AuthorText = book.Author;
+                    editBookView.GenreText = book.Genre;
+                    editBookView.PriceText = book.Price.ToString();
+                    editBookView.PublicationYearText = book.PublicationYear.ToString();
+                }
             }
+            catch (Exception) { }
         }
 
     }

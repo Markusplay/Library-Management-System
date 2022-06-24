@@ -98,7 +98,7 @@ namespace Course
         {
             GuestPresenter guestPresenter = new GuestPresenter(this);
             guestPresenter.SetAddInfo(this);
-            if (!guestPresenter.BookExist())
+            if (!guestPresenter.BookExistInWishlist())
             {
                 guestPresenter.AddBookToWishList();
             }
@@ -125,8 +125,12 @@ namespace Course
 
         private void dataGridViewWishList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var idDelCell = dataGridViewWishList.Rows[e.RowIndex].Cells[0].Value;
-            _wishId = (int)idDelCell;
+            try
+            {
+                var idDelCell = dataGridViewWishList.Rows[e.RowIndex].Cells[0].Value;
+                _wishId = (int)idDelCell;
+            }
+            catch (Exception) { }
         }
 
         private void dataGridViewWishList_CellContentClick(object sender, DataGridViewCellEventArgs e)

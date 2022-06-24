@@ -4,7 +4,7 @@ using Course.Presenter;
 using Course.View;
 namespace Course
 {
-    public partial class addBook : Form, IAddBook
+    public partial class AddBookPage : Form, IAddBook
     {
         private string _selectedGenre;
         public string TitleText
@@ -38,7 +38,7 @@ namespace Course
             set { txtNewGenre.Text = value; }
         }
 
-        public addBook() => InitializeComponent();
+        public AddBookPage() => InitializeComponent();
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,15 @@ namespace Course
         private void btnAddNewGenre_Click(object sender, EventArgs e)
         {
             AddBookPresenter addBookPresenter = new AddBookPresenter(this);
-            addBookPresenter.AddNewGenre(NewGenreText);
+            if (NewGenreText=="")
+            {
+                MessageBox.Show("Input genre");
+            }
+            else
+            {
+                addBookPresenter.AddNewGenre(NewGenreText);
+            }
+            
         }
     }
 }

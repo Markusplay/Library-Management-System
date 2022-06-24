@@ -83,11 +83,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CatalogDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddBook.cs">
+    <Compile Include="Forms\AddBookPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddBook.Designer.cs">
-      <DependentUpon>AddBook.cs</DependentUpon>
+    <Compile Include="Forms\AddBookPage.Designer.cs">
+      <DependentUpon>AddBookPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminPage.cs">
       <SubType>Form</SubType>
@@ -167,8 +167,8 @@
     <Compile Include="View\IEditBook.cs" />
     <Compile Include="View\IGuestPage.cs" />
     <Compile Include="View\IGuestLog.cs" />
-    <EmbeddedResource Include="Forms\AddBook.resx">
-      <DependentUpon>AddBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddBookPage.resx">
+      <DependentUpon>AddBookPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
@@ -211,6 +211,7 @@
     <None Include="CatalogDataSet.xss">
       <DependentUpon>CatalogDataSet.xsd</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Model\CatalogModel.edmx.diagram">
       <DependentUpon>CatalogModel.edmx</DependentUpon>
     </None>

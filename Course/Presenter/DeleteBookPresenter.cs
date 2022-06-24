@@ -26,9 +26,9 @@ namespace Course.Presenter
                     MessageBox.Show("Book deleted successfully");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong");
+                ShowError(ex);
             }
         }
     }

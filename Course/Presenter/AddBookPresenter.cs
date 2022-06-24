@@ -3,7 +3,6 @@ using Course.Model;
 using Course.View;
 using System.Windows.Forms;
 using System.Linq;
-using System.Data.Entity;
 namespace Course.Presenter
 {
     class AddBookPresenter : GuestPresenter
@@ -49,21 +48,20 @@ namespace Course.Presenter
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong");
+                ShowError(ex);
             }
-
         }
         // Check if a book exists in the catalog and throw the notification
         public bool BookExist(string genre)
         {
             using (var db = new Entities())
             {
-                WishList book = null;
+                Books book = null;
                 try
                 {
-                    book = new WishList()
+                    book = new Books()
                     {
                         Title = addBookView.TitleText,
                         Author = addBookView.AuthorText,
@@ -72,7 +70,7 @@ namespace Course.Presenter
                         PublicationYear = int.Parse(addBookView.PublicationYearText)
                     };
 
-                    foreach (var item in db.WishList)
+                    foreach (var item in db.Books)
                     {
                         if (item.Title == book.Title && item.Author == book.Author && item.Genre == book.Genre && item.Price == book.Price && item.PublicationYear == book.PublicationYear)
                         {
@@ -88,39 +86,42 @@ namespace Course.Presenter
             }
             return false;
         }
+        //Add new genre to the database
         public void AddNewGenre(string genre)
         {
-            using (var db = new Entities())
+            try
             {
-                bool genreExist = false;
-                int id = db.Genres.Max(e => e.GenreId);
-                ++id;
-                var newGenre = new Genres()
+                using (var db = new Entities())
                 {
-                    GenreId = id,
-                    Genre = genre
-                };
-                foreach (var item in db.Genres)
-                {
-                    if (item.Genre == genre)
+                    bool genreExist = false;
+                    int id = db.Genres.Max(e => e.GenreId);
+                    ++id;
+                    var newGenre = new Genres()
                     {
-                        MessageBox.Show("Genre is already exists");
-                        genreExist = true;
-                        break;
+                        GenreId = id,
+                        Genre = genre
+                    };
+                    foreach (var item in db.Genres)
+                    {
+                        if (item.Genre == genre)
+                        {
+                            MessageBox.Show("Genre is already exists");
+                            genreExist = true;
+                            break;
+                        }
+                    }
+                    if (!genreExist)
+                    {
+                        db.Genres.Add(newGenre);
+                        db.SaveChanges();
+                        MessageBox.Show("The new findGenre added successfully");
                     }
                 }
-                if (!genreExist)
-                {
-                    db.Genres.Add(newGenre);
-                    db.SaveChanges();
-                    MessageBox.Show("The new genre added successfully");
-                }
             }
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Incorrect data");
-            //}
-
+            catch (Exception)
+            {
+                MessageBox.Show("Incorrect data");
+            }
         }
     }
 }

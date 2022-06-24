@@ -60,8 +60,12 @@ namespace Course
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var idDelCell = dataGridView.Rows[e.RowIndex].Cells[0].Value;
-            _ID = (int)idDelCell;
+            try
+            {
+                var idDelCell = dataGridView.Rows[e.RowIndex].Cells[0].Value;
+                _ID = (int)idDelCell;
+            }
+            catch (Exception) { }
         }
 
         private void btnExit_Click(object sender, EventArgs e) => Application.Exit();

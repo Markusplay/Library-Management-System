@@ -291,6 +291,10 @@ namespace Course
             // 
             this.dataGridViewWishList.AllowUserToAddRows = false;
             this.dataGridViewWishList.AllowUserToDeleteRows = false;
+            this.dataGridViewWishList.AllowUserToOrderColumns = true;
+            this.dataGridViewWishList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewWishList.AutoGenerateColumns = false;
             this.dataGridViewWishList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWishList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -306,7 +310,7 @@ namespace Course
             this.dataGridViewWishList.Name = "dataGridViewWishList";
             this.dataGridViewWishList.ReadOnly = true;
             this.dataGridViewWishList.Size = new System.Drawing.Size(544, 143);
-            this.dataGridViewWishList.TabIndex = 44;
+            this.dataGridViewWishList.TabIndex = 34;
             this.dataGridViewWishList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWishList_CellClick);
             this.dataGridViewWishList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWishList_CellContentClick);
             // 

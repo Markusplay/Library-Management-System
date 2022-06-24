@@ -30,7 +30,8 @@ namespace Course
         private void btnLogin_Click(object sender, EventArgs e)
         {
             GuestLogPresenter guest = new GuestLogPresenter(this);
-            guest.StartGuestPage();
+            if (guest.StartGuestPage())
+                Hide();
         }
         private void Form1_Load(object sender, EventArgs e)
         { }
@@ -39,13 +40,19 @@ namespace Course
             AdminPresenter admin = new AdminPresenter(this);
             try
             {
-                admin.StartAdminPage();
-                Hide();
+                if (admin.StartAdminPage())
+                    Hide();
             }
             catch (Exception)
             {
                 MessageBox.Show("Username or password is incorrect");
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            AdminPresenter register = new AdminPresenter(this);
+            register.Register();
         }
     }
 }

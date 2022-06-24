@@ -31,7 +31,7 @@ namespace Course
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            addBook addBook = new addBook();
+            AddBookPage addBook = new AddBookPage();
             Hide();
             addBook.Show();
         }
